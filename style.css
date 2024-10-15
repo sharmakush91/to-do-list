@@ -1,0 +1,223 @@
+body {
+  background-color: mediumslateblue;
+}
+
+h1 {
+  font-family: "Playfair Display";
+  text-align: center;
+
+  margin-top: 50px;
+  color: white;
+}
+
+.options {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 50px;
+}
+
+.text-box-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  margin: auto;
+  margin-top: 20px;
+  border: 2px solid transparent; /* Transparent border */
+  border-radius: 4px;
+  box-shadow: none;
+  transition: border 0.2s ease, box-shadow 0.2s ease; /* Smooth transitions */
+}
+
+.text-box-container.drag-over {
+  border: 2px solid rgba(176, 190, 197, 0.5); /* Semi-transparent light gray-blue border */
+  box-shadow: 0 0 10px rgba(79, 18, 121, 0.5); /* Soft shadow */
+}
+
+.textBox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  width: 70%;
+  cursor: grab;
+}
+.textBox.hidden {
+  display: none;
+}
+
+.toDoList {
+  height: 40px;
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: white;
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  color: #333;
+  padding: 0 30px; /* Add padding to prevent text overlap with icons */
+  padding-right: 90px;
+  cursor: grab;
+}
+
+.bin-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 30px;
+  right: 5px; /* Space from the right edge of the box */
+  color: rgb(0, 0, 0);
+  transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for scaling and color */
+}
+.bin-icon:hover {
+  transform: translateY(-50%) scale(1.2); /* Scale to 120% of original size */
+  color: rgb(121, 117, 117);
+}
+.checkmark-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  cursor: pointer;
+  font-size: 25px;
+  right: 40px; /* Space from the right edge of the box, adjust as needed */
+  color: rgb(255, 255, 255); /* Green color for the checkmark */
+  border: none;
+  outline: none;
+  background-color: #e76224;
+  height: 42px;
+}
+.checkmark-icon:hover {
+  transform: translateY(-50%) scale(1.1); /* Scale to 120% of original size */
+  color: rgb(0, 0, 0);
+}
+
+.circleBtn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #e76224;
+  color: white;
+  font-size: 24px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 4px 6px rgba(230, 27, 27, 0.1);
+  transition: background-color 0.3s;
+}
+.circleBtn:hover {
+  transform: scale(1.1);
+  color: black;
+}
+
+.allOptions {
+  height: 45px;
+  border-radius: 20px;
+  padding: 0 30px;
+  border: 1px solid #ccc;
+  background-color: white;
+  appearance: none;
+  outline: none;
+  font-size: 16px;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cGF0aCBkPSJNMyA2TDggMTFMMTMgNiIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4=");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+.allOptions option {
+  scroll-behavior: smooth;
+}
+.addText {
+  border-radius: 20px;
+  text-align: center;
+  height: 40px;
+  width: 300px; /* Fixed width */
+  border: 1px solid #eeeeee;
+  background-color: white;
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  color: #333;
+}
+
+.strikeThrough {
+  text-decoration: line-through;
+}
+
+.hidden {
+  display: none;
+}
+
+.draggable-box {
+  position: fixed; /* Fixed position so it stays in place even when scrolling */
+  top: 13%; /* Adjusted top position based on the viewport height */
+  right: 3%; /* Adjusted right position based on the viewport width */
+  width: 90%; /* Use a percentage for width */
+  max-width: 500px; /* Maximum width to maintain layout */
+  height: 50vh; /* Use viewport height to make it responsive */
+  padding: 20px;
+  background-color: #f3e5f5;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(66, 66, 66, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  resize: vertical;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.priorities {
+  margin-top: 0px;
+  font-size: large;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.5rem;
+    margin-top: 30px;
+  }
+
+  .options {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .addText {
+    width: 80%; /* Make input width responsive */
+    font-size: 16px;
+  }
+
+  .circleBtn {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .allOptions {
+    width: 80%; /* Make select box responsive */
+    font-size: 16px;
+  }
+
+  .text-box-container {
+    width: 90%; /* Adjust the width of the text box container */
+  }
+
+  .textBox {
+    width: 100%; /* Make text box full width on mobile */
+  }
+
+  .toDoList {
+    font-size: 16px;
+    padding: 0 25px;
+  }
+
+  .draggable-box {
+    display: none; /* Hide the draggable box on mobile */
+  }
+}
